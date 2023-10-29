@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('family');
-            $table->string('father');
+            $table->string('name'); 
+            $table->string('family'); 
+            $table->string('father'); 
             $table->string('mother');
-            $table->string('birth_place');
-            $table->date('birth_date');
+            $table->string('birth_place'); 
+            $table->date('birth_date'); 
             $table->enum('sex' , ['m' , 'f']);
             $table->enum('title' , ['Mr' , 'Ms' , 'Dr' ,'Esq']);
             $table->string('national_number');
@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('children')->nullable();
             $table->string('exp_brief')->default('No previous experience');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
