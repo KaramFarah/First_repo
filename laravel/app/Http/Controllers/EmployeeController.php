@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::all();
+        $departments = Department::all();
+        return view('employee.index' , compact('employees'));
     }
 
     /**
@@ -20,7 +23,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.create');
     }
 
     /**
@@ -28,7 +31,10 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Employee::create($request->all());
+        session()->flash('Add', 'EMPLOYEE HAS BEEN ADDED SUCCESSFULLY ');
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -36,7 +42,8 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        $emp = $employee;
+        return view('employee.show' , compact('emp'));
     }
 
     /**
@@ -44,7 +51,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        $emp = $employee;
+        return view('employee.edit' , compact('emp'));
     }
 
     /**
@@ -52,7 +60,8 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $employee->update($request->all());
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -60,6 +69,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->route('employee.index');
     }
 }

@@ -8,13 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
-    /**
-     * Get all of the employee for the Department
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+    protected $guarded = [];
+    
     public function employee()
     {
-        return $this->hasMany(Employee::class, 'foreign_key', 'local_key');
+        return $this->hasMany(Employee::class);
     }
 }

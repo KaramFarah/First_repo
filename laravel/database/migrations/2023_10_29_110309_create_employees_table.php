@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('passport_number')->nullable();
             $table->string('address');
             $table->string('landline');
+            $table->string('phone');
             $table->foreignId('department_id')->constrained('departments')->onDelete('cascade');
             $table->enum('health_status' , ['decent' , 'handicapped']);
             $table->enum('socail_status' , ['married' , 'single']);

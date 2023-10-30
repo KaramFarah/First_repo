@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employee extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
+    protected $guarded = [];
 
     /**
      * Get the department that owns the Employee
@@ -16,6 +20,6 @@ class Employee extends Model
      */
     public function department()
     {
-        return $this->belongsTo(Department::class, 'foreign_key', 'other_key');
+        return $this->belongsTo(Department::class);
     }
 }
