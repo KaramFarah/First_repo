@@ -17,7 +17,7 @@ use App\Http\Controllers\DepartmentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('employee.index');
 });
 
 Auth::routes(['register' => false]);
