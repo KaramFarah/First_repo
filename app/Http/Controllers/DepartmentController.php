@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class DepartmentController extends Controller
 {
@@ -12,7 +13,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -20,7 +21,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('department.create');
     }
 
     /**
@@ -28,7 +29,9 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {{session_start();}}
+        Department::create($request->all());
+        return redirect()->route('employee.index');
     }
 
     /**

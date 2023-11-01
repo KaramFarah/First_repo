@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+
+@section('css')
+
+
+@endsection
+
 @section('content')
 <div class="container-xl">
     <a href="{{ route('employee.create') }}" class="btn btn-primary" style="margin-bottom: 2%">add new user</a>
@@ -76,3 +82,7 @@
 
 
 
+@section('js')
+
+
+@endsection

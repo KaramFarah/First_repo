@@ -28,3 +28,5 @@ Route::resource('/department' , DepartmentController::class);
 
 Route::resource('/employee' , EmployeeController::class);
 
+Route::get('/search' , [EmployeeController::class , 'search']);
+
